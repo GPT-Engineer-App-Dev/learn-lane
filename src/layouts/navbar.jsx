@@ -9,12 +9,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { CircleUser, Menu, Package2, Code } from "lucide-react";
+import { CircleUser, Menu, Package2 } from "lucide-react";
+import { Code } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import { navItems } from "../App";
 
-const navItems = [
-  // existing nav items
+const updatedNavItems = [
+  ...navItems,
   {
     title: "Code Editor",
     to: "/code-editor",
@@ -46,7 +47,7 @@ const DesktopNav = () => (
       <Package2 className="h-6 w-6" />
       <span className="sr-only">Acme Inc</span>
     </NavItem>
-    {navItems.map((item) => (
+    {updatedNavItems.map((item) => (
       <NavItem key={item.to} to={item.to}>
         {item.title}
       </NavItem>
@@ -71,7 +72,7 @@ const MobileNav = () => (
           <Package2 className="h-6 w-6" />
           <span className="sr-only">Acme Inc</span>
         </NavItem>
-        {navItems.map((item) => (
+        {updatedNavItems.map((item) => (
           <NavItem key={item.to} to={item.to}>
             {item.title}
           </NavItem>

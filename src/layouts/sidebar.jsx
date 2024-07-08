@@ -13,6 +13,15 @@ import { CircleUser, Menu, Package2, Code } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import { navItems } from "../App";
 
+const updatedNavItems = [
+  ...navItems,
+  {
+    title: "Code Editor",
+    to: "/code-editor",
+    icon: <Code className="h-4 w-4" />,
+  },
+];
+
 const Layout = () => {
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
@@ -31,15 +40,6 @@ const Layout = () => {
   );
 };
 
-const navItems = [
-  // existing nav items
-  {
-    title: "Code Editor",
-    to: "/code-editor",
-    icon: <Code className="h-4 w-4" />,
-  },
-];
-
 const Sidebar = () => (
   <div className="hidden border-r bg-muted/40 md:block">
     <div className="flex h-full max-h-screen flex-col gap-2">
@@ -51,7 +51,7 @@ const Sidebar = () => (
       </div>
       <div className="flex-1">
         <nav className="grid items-start px-2 text-sm font-medium lg:px-4 gap-2">
-          {navItems.map((item) => (
+          {updatedNavItems.map((item) => (
             <SidebarNavLink key={item.to} to={item.to}>
               {item.icon}
               {item.title}
@@ -80,7 +80,7 @@ const MobileSidebar = () => (
           <Package2 className="h-6 w-6" />
           <span className="sr-only">Acme Inc</span>
         </NavLink>
-        {navItems.map((item) => (
+        {updatedNavItems.map((item) => (
           <SidebarNavLink key={item.to} to={item.to}>
             {item.title}
           </SidebarNavLink>
